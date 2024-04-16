@@ -28,14 +28,14 @@ const LGBTTheme = `
 // A plugin can be used multiple times with different arguments
 
 const plugins = [
-  { fn: addUMSLAttribution,  enabled: true },
-  { fn: animateLogos,        enabled: true },
-  { fn: identifyCurrentPage, enabled: true },
-  { fn: formatTranscripts,   enabled: true },
-  { fn: googleCustomSearch,  enabled: true },
-  { fn: makePlaceholder,     enabled: true },
+  { fn: addUMSLAttribution,  enabled: false },
+  { fn: animateLogos,        enabled: false },
+  { fn: identifyCurrentPage, enabled: true  },
+  { fn: formatTranscripts,   enabled: true  },
+  { fn: googleCustomSearch,  enabled: false },
+  { fn: makePlaceholder,     enabled: true  },
 
-  { fn: addThemeByTag,       enabled: true,
+  { fn: addThemeByTag,       enabled: false,
     args: [['LGBT', 'LGBTQ'], LGBTTheme],
   },
 
