@@ -1,4 +1,5 @@
 import { default as addThemeByTag       } from './addThemeByTag'
+import { default as addTiktokSocialIcon } from './addTiktokSocialIcon'
 import { default as addUMSLAttribution  } from './addUMSLAttribution'
 import { default as animateLogos        } from './animateLogos'
 import { default as identifyCurrentPage } from './identifyCurrentPage'
@@ -28,6 +29,7 @@ const LGBTTheme = `
 // A plugin can be used multiple times with different arguments
 
 const plugins = [
+  { fn: addTiktokSocialIcon, enabled: true  },
   { fn: addUMSLAttribution,  enabled: false },
   { fn: animateLogos,        enabled: false },
   { fn: identifyCurrentPage, enabled: true  },
