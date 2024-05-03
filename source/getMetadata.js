@@ -14,7 +14,7 @@ function getMetadata () {
     storyTitle:        brightspotDataLayer.storyTitle   || document.querySelector('h1')?.textContent || document.title,
     pageType:          brightspotDataLayer.pageType     || '',
     program:           brightspotDataLayer.program      || '',
-    timezone:          brightspotDataLayer.timezone     || 'US/Central',
+    timezone:          brightspotDataLayer.timezone     || 'US/Eastern',
     hasInlineAudio:    !!(brightspotDataLayer.inlineAudio || 0),
     publishedDate:     brightspotDataLayer.publishedDate ? new Date(brightspotDataLayer.publishedDate) : '',
 
@@ -25,8 +25,8 @@ function getMetadata () {
     brightspotStoryID: brightspotDataLayer.bspStoryId   || null,
     NPRStoryID:        brightspotDataLayer.nprStoryId   || null,
     stationID:         brightspotDataLayer.stationOrgId || null,
-    station:           brightspotDataLayer.station      || 'St. Louis Public Radio',
-    siteName:          brightspotDataLayer.siteName     || 'STLPR',
+    station:           brightspotDataLayer.station      || 'WHRO Public Media',
+    siteName:          brightspotDataLayer.siteName     || 'WHRO',
     isNPRStation:      brightspotDataLayer.nprCmsSite   || false,
 
     // storyOrgId: displays 0 on story pages
