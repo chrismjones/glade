@@ -7,6 +7,7 @@ import { default as IEBannerMessage     } from './IEBannerMessage'
 import { default as formatTranscripts   } from './formatTranscripts'
 import { default as googleCustomSearch  } from './googleCustomSearch'
 import { default as makePlaceholder     } from './makePlaceholder'
+import { default as addIntercomMessenger } from './addIntercomMessenger';
 
 
 const LGBTTheme = `
@@ -36,7 +37,7 @@ const plugins = [
   { fn: formatTranscripts,   enabled: true  },
   { fn: googleCustomSearch,  enabled: false },
   { fn: makePlaceholder,     enabled: true  },
-
+  { fn: addIntercomMessenger, enabled: true },
   { fn: addThemeByTag,       enabled: false,
     args: [['LGBT', 'LGBTQ'], LGBTTheme],
   },
