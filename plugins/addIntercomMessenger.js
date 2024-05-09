@@ -34,5 +34,6 @@ function intercomMessenger() {
 }
 
 export default () => {
+  intercomMessenger();
   onNavigate(() => intercomMessenger());
 }
