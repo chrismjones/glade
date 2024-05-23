@@ -1,13 +1,14 @@
-import { default as addThemeByTag       } from './addThemeByTag'
-import { default as addTiktokSocialIcon } from './addTiktokSocialIcon'
-import { default as addUMSLAttribution  } from './addUMSLAttribution'
-import { default as animateLogos        } from './animateLogos'
-import { default as identifyCurrentPage } from './identifyCurrentPage'
-import { default as IEBannerMessage     } from './IEBannerMessage'
-import { default as formatTranscripts   } from './formatTranscripts'
-import { default as googleCustomSearch  } from './googleCustomSearch'
-import { default as makePlaceholder     } from './makePlaceholder'
+import { default as addThemeByTag       }  from './addThemeByTag'
+import { default as addTiktokSocialIcon }  from './addTiktokSocialIcon'
+import { default as addUMSLAttribution  }  from './addUMSLAttribution'
+import { default as animateLogos        }  from './animateLogos'
+import { default as identifyCurrentPage }  from './identifyCurrentPage'
+import { default as IEBannerMessage     }  from './IEBannerMessage'
+import { default as formatTranscripts   }  from './formatTranscripts'
+import { default as googleCustomSearch  }  from './googleCustomSearch'
+import { default as makePlaceholder     }  from './makePlaceholder'
 import { default as addIntercomMessenger } from './addIntercomMessenger';
+import { default as addRibbon }            from './addRibbon';
 
 
 const LGBTTheme = `
@@ -30,14 +31,15 @@ const LGBTTheme = `
 // A plugin can be used multiple times with different arguments
 
 const plugins = [
-  { fn: addTiktokSocialIcon, enabled: true  },
-  { fn: addUMSLAttribution,  enabled: false },
-  { fn: animateLogos,        enabled: false },
-  { fn: identifyCurrentPage, enabled: true  },
-  { fn: formatTranscripts,   enabled: true  },
-  { fn: googleCustomSearch,  enabled: false },
-  { fn: makePlaceholder,     enabled: true  },
-  { fn: addIntercomMessenger, enabled: true },
+  { fn: addTiktokSocialIcon,  enabled: true  },
+  { fn: addUMSLAttribution,   enabled: false },
+  { fn: animateLogos,         enabled: false },
+  { fn: identifyCurrentPage,  enabled: true  },
+  { fn: formatTranscripts,    enabled: true  },
+  { fn: googleCustomSearch,   enabled: false },
+  { fn: makePlaceholder,      enabled: true  },
+  { fn: addIntercomMessenger, enabled: true  },
+  { fn: addRibbon,            enabled: true  },
   { fn: addThemeByTag,       enabled: false,
     args: [['LGBT', 'LGBTQ'], LGBTTheme],
   },
