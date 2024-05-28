@@ -131,7 +131,6 @@ function addRibbon() {
 			htm += 		'</div>';
 			htm += '</div>';
             document.querySelector(".Page-above").insertAdjacentHTML('beforebegin',htm)
-            document.querySelector(".Page-above").remove();
         }
     }
 
