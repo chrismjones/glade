@@ -1,3 +1,5 @@
+import onNavigate from '../lib/onNavigate'
+
 const tvPledgeRibbonCSS = `
     .d-none{display:none !important}
     .d-flex{display:flex !important}
@@ -96,7 +98,13 @@ function addRibbon() {
             var htm = "";
             var commonImgs = "https://pages.whro.org/assets/imgs/";
             var pledgeImgs = "https://pages.whro.org/assets/imgs/";
-           	var today = "060324";
+
+            const today = new Date();
+            const day = today.getDate().toString().padStart(2, "0");
+            const month = (today.getMonth() + 1).toString().padStart(2, "0");
+            const year = today.getFullYear().toString().slice(-2);
+            const formattedDate = `${month}${day}${year}`; //Output example: 052424
+
 	   		htm += '<style>';
 	    	htm += '.pledgeBanner{ background:url("'+commonImgs+'swyl_bkg_corpBlue.jpg") repeat-x transparent 0 0; height:90px; }';
 			htm += '.pledgeBanner{ background-color:#0b4f71; height:90px; }';
@@ -112,8 +120,8 @@ function addRibbon() {
 			htm += 		'<div class="container siteBannerInner d-flex">';
 			htm += 			'<img class="bannerLogo d-none d-md-block" src="'+commonImgs+'swylHeart_l.png" alt="" />';
 			htm += 			'<img class="bannerLogo d-md-none" src="'+commonImgs+'swylHeart_s.png" alt="" />';
-			htm += 			'<img id="img_599" class="d-none" src="'+pledgeImgs+today+'_599.png" alt="" />';
-			htm += 			'<img id="img_250" class="d-none" src="'+pledgeImgs+today+'_250.png" alt="" />';
+			htm += 			'<img id="img_599" class="d-none" src="'+pledgeImgs+formattedDate+'_599.png" alt="" />';
+			htm += 			'<img id="img_250" class="d-none" src="'+pledgeImgs+formattedDate+'_250.png" alt="" />';
 			htm += 			'<div class="amounts d-none d-md-block mdAmounts">';
 			htm += 				'<a href="https://members.whro.org/?technique=OnlineMainBanner" target="_blank" rel="noopener">Support Now</a>';
 			htm += 			'</div>';
@@ -122,7 +130,7 @@ function addRibbon() {
 			htm += 			'</div>';
 			htm += 		'</div>';
 			htm += '</div>';
-            document.querySelector(".HomePage-main").insertAdjacentHTML('beforebegin',htm)
+            document.querySelector(".Page-above").insertAdjacentHTML('beforebegin',htm)
             document.querySelector(".Page-above").remove();
         }
     }
