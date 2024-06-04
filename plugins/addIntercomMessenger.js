@@ -1,5 +1,5 @@
 import onNavigate from '../lib/onNavigate';
-
+import pageMatches from '../source/pageMatches';
 function intercomMessenger() {
   window.intercomSettings = { app_id: "sqvgjxhh" };
   
@@ -38,10 +38,13 @@ function intercomMessenger() {
 }
 
 export default () => {
-  intercomMessenger();
-  onNavigate(() => {
-    window.Intercom = null;
-    document.getElementById('intercom-messenger').remove();
-    intercomMessenger();
-  });
+    if(pageMatches('/contact-us', '/support-whro-public-media')) {
+        console.log("page matches")
+        intercomMessenger();
+        onNavigate(() => {
+            window.Intercom = null;
+            document.getElementById('intercom-messenger').remove();
+            intercomMessenger();
+        });
+    }
 }
