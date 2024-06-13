@@ -96,8 +96,8 @@ function addRibbon() {
     
     	if(ribbonDateRange.contains(ribbonNow)) {
             var htm = "";
-            var commonImgs = "https://pages.whro.org/assets/imgs/";
-            var pledgeImgs = "https://pages.whro.org/assets/imgs/";
+            var commonImgs = "https://pages.whro.org/assets/imgs/pledge/"
+            var pledgeImgs = "https://pages.whro.org/assets/imgs/pledge/202406/";
 
             const today = new Date();
             const day = today.getDate().toString().padStart(2, "0");
