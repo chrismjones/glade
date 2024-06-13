@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import onNavigate from '../lib/onNavigate'
 
 const logo = `<img src="https://pages.whro.org/assets/imgs/icon_tiktok.png" style="height:15px" />`;
