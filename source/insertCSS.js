@@ -1,14 +1,24 @@
 import onNavigate from '../lib/onNavigate'
 
 
-// insertCSS (markup [, shouldPersist])
-// inserts a style tag with raw CSS
+const stylesheets = []
 
-function insertCSS (markup, shouldPersist = false) {
-  // Create the styles and append them
+/**
+ * Insert a style tag with raw CSS into the document head
+ * @param   {string}   rules          CSS rules as they would appear in a stylesheet
+ * @param   {boolean}  shouldPersist  Should styles remain as the user navigates to another page?
+ * @returns {Element}                 A reference to the loaded CSS so it can be manipulated
+ */
+
+function insertCSS (rules, shouldPersist = false) {
+  // Fail silently if styles already exist
+  for (let stylesheet of stylesheets) {
+    if (stylesheet.textContent == rules) return
+  }
+
+  // Create and append style element
   const styles = document.createElement('style')
-  styles.textContent = markup
-
+  styles.textContent = rules
   document.head.insertAdjacentElement('beforeend', styles)
 
   // Remove styles unless set to persist
@@ -16,7 +26,7 @@ function insertCSS (markup, shouldPersist = false) {
     onNavigate(() => styles.remove(), { once: true })
   }
 
-  // Pass an HTML Reference to the loaded CSS
+  // Return an HTML Reference to the loaded CSS
   return styles
 }
 

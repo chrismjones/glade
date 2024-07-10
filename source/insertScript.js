@@ -1,56 +1,38 @@
-import onNavigate from '../lib/onNavigate'
+import onNavigate      from '../lib/onNavigate'
+import applyAttributes from '../lib/applyAttributes'
 
 
-// insertScript (attributes [, shouldPersist])
-// load a given script if not already present on the page
+/**
+ * Load an external JavaScript file if not already present on the page
+ * @param   {Object}   attributes     Attributes to apply to a `script` element. `src` element is required
+ * @param   {Boolean}  shouldPersist  Should script remain as the user navigates to another page? ⚠️ Removing does not cancel intervals/eventListeners
+ * @returns {Element}                 A reference to the external script so it can be manipulated
+ */
 
-// WARNING: insertScript has a "shouldPersist" property
-//   removing a script does not cancel intervals/event Listeners set by it
-//   shouldPersist is a property because insertScript fails if the script is
-//   already present.
-
-function addAttributes (element, attributes = {}) {
-  for (const [attribute, value] of Object.entries(attributes)) {
-    // support Boolean Attributes
-    if (typeof value === 'boolean') {
-      if (value) element.setAttribute(attribute, '')
-    }
-
-    else {
-      element.setAttribute(attribute, value)
-    }
+function insertScript (attributes, shouldPersist = false) {
+  if (!attributes || !attributes.src) {
+    throw new ReferenceError('Script src is required. Use syntax Glade.insertScript({src: "PATH"})')
   }
-}
 
-
-function insertScript (attributes = {}, shouldPersist = false) {
   // Find all external scripts on the page
-  const scripts = [...document.querySelectorAll('script')]
-  const externalScripts = scripts.filter(script => script.src)
+  const scripts    = [...document.querySelectorAll('script[src]')]
+  const scriptURLs = scripts.map(script => script.scr)
 
-  // Fail loudly if script was not provided
-  if (!attributes.src) {
-    throw new Error('Script src is required. Use syntax Glade.insertScript({src: "PATH"})')
-  }
-  // Fail silently if script is already present
-  if (externalScripts.includes(attributes.src)) {
-    return
-  }
+  if (scriptURLs.includes(attributes.src)) return
 
   // Create a new script and inject it into the DOM
   const newScript = document.createElement('script')
-  addAttributes(newScript, attributes)
+  applyAttributes(newScript, attributes)
 
   const lastScript = scripts[scripts.length - 1]
   lastScript.after(newScript)
 
-  // Remove script if set not to persist
-  // WARNING! removing the script does not cancel intervals/eventListeners
+  // Remove script if not set to persist
   if (!shouldPersist) {
     onNavigate(() => newScript.remove(), { once: true })
   }
 
-  // Pass an HTML Reference to the script
+  // Return an HTML Reference to the script
   return newScript
 }
 

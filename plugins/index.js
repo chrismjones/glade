@@ -1,14 +1,16 @@
-import { default as addThemeByTag       }  from './addThemeByTag'
-import { default as addTiktokSocialIcon }  from './addTiktokSocialIcon'
-import { default as addUMSLAttribution  }  from './addUMSLAttribution'
-import { default as animateLogos        }  from './animateLogos'
-import { default as identifyCurrentPage }  from './identifyCurrentPage'
-import { default as IEBannerMessage     }  from './IEBannerMessage'
-import { default as formatTranscripts   }  from './formatTranscripts'
-import { default as googleCustomSearch  }  from './googleCustomSearch'
-import { default as makePlaceholder     }  from './makePlaceholder'
-import { default as addIntercomMessenger } from './addIntercomMessenger';
-import { default as addRibbon }            from './addRibbon';
+import { default as addIntercomMessenger }  from './addIntercomMessenger';
+import { default as addRibbon            }  from './addRibbon';
+import { default as addTiktokSocialIcon  }  from './addTiktokSocialIcon'
+import { default as addUMSLAttribution   }  from './addUMSLAttribution'
+import { default as animateLogos         }  from './animateLogos'
+import { default as applyThemeByTag      }  from './applyThemeByTag'
+import { default as identifyCurrentPage  }  from './identifyCurrentPage'
+import { default as formatTranscripts    }  from './formatTranscripts'
+import { default as googleCustomSearch   }  from './googleCustomSearch'
+import { default as loadDonateAsk        }  from './loadDonateAsk'
+import { default as loadDonatePopUp      }  from './loadDonatePopUp'
+import { default as Placeholder          }  from './components.Placeholder'
+import { default as replaceNewsletter    }  from './replaceNewsletter'
 
 
 const LGBTTheme = `
@@ -31,21 +33,25 @@ const LGBTTheme = `
 // A plugin can be used multiple times with different arguments
 
 const plugins = [
+  { fn: addIntercomMessenger, enabled: true  },
+  { fn: addRibbon,            enabled: true  },
   { fn: addTiktokSocialIcon,  enabled: true  },
   { fn: addUMSLAttribution,   enabled: false },
   { fn: animateLogos,         enabled: false },
   { fn: identifyCurrentPage,  enabled: true  },
   { fn: formatTranscripts,    enabled: true  },
   { fn: googleCustomSearch,   enabled: false },
-  { fn: makePlaceholder,      enabled: true  },
-  { fn: addIntercomMessenger, enabled: true  },
-  { fn: addRibbon,            enabled: true  },
-  { fn: addThemeByTag,       enabled: false,
+  { fn: loadDonateAsk,        enabled: false },
+  { fn: loadDonatePopUp,      enabled: false },
+  { fn: Placeholder,          enabled: true },
+  { fn: applyThemeByTag,       enabled: false,
     args: [['LGBT', 'LGBTQ'], LGBTTheme],
   },
-
-  { fn: IEBannerMessage,     enabled: false,
-    args: ['Not all features may be supported in Internet Explorer'],
+  { fn: replaceNewsletter,  enabled: false,
+    args: ['STL Welcome Kit',
+      'https://app.e2ma.net/app2/audience/signup/1931618/1784312/', // The Gateway
+      'https://app.e2ma.net/app2/audience/signup/1992160/1784312/', // STL Welcome Kit
+    ],
   },
 ]
 

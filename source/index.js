@@ -1,6 +1,6 @@
 // Utilities
 import { default as addIsolatedEventListener } from './addIsolatedEventListener'
-import { default as getMetadata              } from './getMetadata'
+import { default as getDataLayer             } from './getDataLayer'
 import { default as insertCSS                } from './insertCSS'
 import { default as insertScript             } from './insertScript'
 import { default as insertStylesheet         } from './insertStylesheet'
@@ -26,22 +26,23 @@ const Glade = {
   setIsolatedInterval,
 
   // Other helper functions
-  getMetadata,
+  getDataLayer,
   pageMatches,
 
-  // Recreate Grove componenets with custom data
+  // Recreate Grove components with custom data
   components: {
     ListB,
     ListC,
     ListD,
     StreamPill,
   },
+
+  onNavigate: [],
 }
 
 
 // Hook into Grove Navigation
 Glade.currentPage = window.location.pathname
-
 
 setInterval(() => {
   const currentPage = window.location.pathname

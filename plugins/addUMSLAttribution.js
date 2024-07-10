@@ -69,10 +69,20 @@ const attributionCSS = `
   text-decoration: underline;
 }
 
+footer .Page-footer-columns {
+  flex-wrap: wrap;
+}
+
 .footer-UMSL-attribution {
   display: flex;
   align-items: flex-start;
   margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  .footer-UMSL-attribution {
+    margin: 2rem 0 1rem 4rem;
+  }
 }
 
 .footer-UMSL-attribution svg {
@@ -107,31 +117,40 @@ const attributionCSS = `
 `
 
 
+function addUMSLNavAttribution () {
+  const menuContainer = document.querySelector('.PH-ham-m-wrapper')
+
+  if (!menuContainer) {
+    console.error('Could not find menu container for UMSL Attribution.')
+    return
+  }
+
+  menuContainer.insertAdjacentHTML('beforeend', menuAttributionHTML)
+}
+
+
 function addUMSLFooterAttribution () {
-  const footerNavigation = document.querySelector('footer nav.FooterNavigation, footer nav.SectionNavigation')
+  const footerNavigation = document.querySelector('footer .Page-footer-columns')
 
   if (!footerNavigation) {
-    throw new Error('Could not find footer navigation for UMSL Attribution.')
+    console.error('Could not find footer navigation for UMSL Attribution.')
+    return
   }
 
   footerNavigation.insertAdjacentHTML('beforeend', footerAttributionHTML)
 }
 
 
-export default () => {
+/**
+ * Add UMSL logo & credit line to the collapsible navigation menu and footer
+ */
+
+export default function addUMSLAttribution () {
   Glade.insertCSS(attributionCSS, true) // true: CSS should persist on navigation
 
-  // Add the hamburger-menu attribution
-  const menuContainer = document.querySelector('.PH-ham-m-wrapper')
-
-  if (!menuContainer) {
-    throw new Error('Could not find menu container for UMSL Attribution.')
-  }
-
-  menuContainer.insertAdjacentHTML('beforeend', menuAttributionHTML)
-
-  // Add the footer attirubtion
+  addUMSLNavAttribution()
   addUMSLFooterAttribution()
+
   // Unlike the nav, which persists in Grove, the footer refreshes each page load
   onNavigate(() => addUMSLFooterAttribution())
 }

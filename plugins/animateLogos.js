@@ -1,3 +1,6 @@
+import onNavigate from '../lib/onNavigate'
+
+
 const stlprLogo = `
 <svg
   class="stlpr-logo"
@@ -48,7 +51,6 @@ const logosCSS = `
 }
 
 .stlpr-logo-lockup {
-  display: block;
   align-self: center;
   fill: white;
   margin-left: 17px;
@@ -133,17 +135,36 @@ const logosCSS = `
 `
 
 
-export default () => {
-  const headerContainer = document.querySelector('.PH-top-bar .PH-logo > a[aria-label="home page"]')
-  const menuContainer   = document.querySelector('.PH-ham-m .PH-logo > a[aria-label="home page"]')
+function replaceLogos () {
+  // Replace logo in the header
+  const headerContainer = document.querySelector('.PH-top-bar .PH-logo a[aria-label="home page"]')
 
-  if (!headerContainer || !menuContainer) {
-    throw new Error('Could not find logo containers.')
+  if (headerContainer) {
+    headerContainer.innerHTML = stlprLogo + nprLogo
+  }
+  else {
+    console.error('Could not find logo container ".PH-top-bar .PH-logo a[aria-label="home page"]".')
   }
 
+  // Replace logo in the collapsible navigation
+  const menuContainer   = document.querySelector('.PH-ham-m .PH-logo a[aria-label="home page"]')
+
+  if (menuContainer) {
+    menuContainer.innerHTML = stlprLogo
+  }
+  else {
+    console.log('Could not find logo container ".PH-ham-m .PH-logo a[aria-label="home page"]".')
+  }
+}
+
+
+/**
+ * Apply a hover animation to the STLPR logos in the header and collapsible navigation
+ */
+
+export default function animateLogos () {
   Glade.insertCSS(logosCSS, true) // true: CSS should persist on navigation
 
-  menuContainer.innerHTML   = stlprLogo
-  headerContainer.innerHTML = stlprLogo
-  headerContainer.insertAdjacentHTML('afterend', nprLogo)
+  replaceLogos()
+  onNavigate(() => replaceLogos())
 }

@@ -1,23 +1,26 @@
-// setIsolatedInterval(callback, milliseconds)
-// a wrapper for setInterval which self-destructs on page navigation
+/* eslint-disable brace-style */
+
+import onNavigate from '../lib/onNavigate'
+
+
+/**
+ * A wrapper for setInterval which self-destructs on page navigation
+ * @param   {Function}  callback      A callback function to execute at the specified interval
+ * @param   {number}    milliseconds  The duration (in ms) of the interval
+ * @returns {interval}                A reference to the interval so it can be manipulated
+ */
 
 function setIsolatedInterval (callback, milliseconds) {
-  const currentPage = () => window.location.pathname
+  // Create the interval
+  const interval = setInterval(callback, milliseconds)
 
-  const startingPage = currentPage()
-  let interval
+  // Clear interval when the user navigates
+  onNavigate(
+    () => { clearInterval(interval) },
+    { once: true }
+  )
 
-  function isolatedCallback () {
-    var hasChangedPages = (startingPage !== currentPage())
-
-    if (hasChangedPages) {
-      clearInterval(interval)
-      return
-    }
-    callback()
-  }
-
-  interval = setInterval(isolatedCallback, milliseconds)
+  // Return a reference to the interval
   return interval
 }
 

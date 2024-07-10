@@ -1,46 +1,26 @@
 import onNavigate from '../lib/onNavigate'
 
 
-// We'll need to detect whether a transcript is present.
-// Look for a RichText Module with a Subhead containing the word "Transcript"
-
-function findTranscripts () {
-  let transcripts = []
+function injectTranscripts () {
+  // Find Transcripts
+  // Transcripts are located in RichText Modules with a Subhead (h2) containing "Transcript"
   let richTextModules = document.querySelectorAll('.RichTextModule')
 
   for (let module of richTextModules) {
     let subhead = module.querySelector('h2')
     if (!subhead) continue
 
-    let title = subhead.textContent.toLowerCase()
-    if (title.includes('transcript')) {
-      transcripts.push(module)
-    }
-  }
-
-  return transcripts
-}
-
-
-function formatTranscripts () {
-  let transcriptModules = findTranscripts()
-
-  for (let module of transcriptModules) {
-    let subhead = module.querySelector('h2')
-
-    // Scrape the content from the module
-    let heading = subhead.innerHTML
-    subhead.remove()
-    let body = module.innerHTML
+    let title = subhead.innerHTML
+    if (!title.toLowerCase().includes('transcript')) continue
 
     // Create the new Transcript widget
     let transcriptMarkup = `
     <section>
-      <h2 id="transcript">${heading}</h2>
+      <h2 id="transcript">${title}</h2>
 
       <details class="collapseable-transcript">
         <summary tabindex="0" role="button">Show/Hide Transcript</summary>
-        ${body}
+        ${module.innerHTML}
       </details>
     </section>`
 
@@ -50,7 +30,11 @@ function formatTranscripts () {
 }
 
 
-export default () => {
-  formatTranscripts()
-  onNavigate(() => formatTranscripts())
+/**
+ * Convert RichText modules containing "Transcript" into collapseable sections
+ */
+
+export default function formatTranscripts () {
+  injectTranscripts()
+  onNavigate(() => injectTranscripts())
 }
