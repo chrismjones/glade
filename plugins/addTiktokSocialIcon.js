@@ -1,6 +1,6 @@
 import onNavigate from '../lib/onNavigate'
 
-const logo = `<img src="${import.meta.env.VITE_ASSETS_URL}/assets/imgs/icon_tiktok.png" style="height:15px" />`;
+const logo = `<img src="${import.meta.env.VITE_ASSETS_URL}/imgs/icon_tiktok.png" style="height:15px" />`;
 
 const socialHTML = `
 <li class="SocialBar-items-item"> 

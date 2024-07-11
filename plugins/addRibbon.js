@@ -97,9 +97,9 @@ function addRibbon() {
     const ribbonDateRange2 = ribbonInterval.fromDateTimes(ribbonDateTime.local(2024, 6, 29, 0, 0), ribbonDateTime.local(2024, 6, 29, 23, 59));
     const ribbonDateRange3= ribbonInterval.fromDateTimes(ribbonDateTime.local(2024, 6, 30, 0, 0), ribbonDateTime.local(2024, 6, 30, 23, 59));
     var htm = "";
-    //var commonImgs = `${import.meta.env.VITE_ASSETS_URL}/assets/imgs/pledge/`;
-    //var pledgeImgs = `${import.meta.env.VITE_ASSETS_URL}/assets/imgs/pledge/202406/`;
-    var EOFY = `${import.meta.env.VITE_ASSETS_URL}/assets/imgs/pledge/eofy/`;
+    //var commonImgs = `${import.meta.env.VITE_ASSETS_URL}/imgs/pledge/`;
+    //var pledgeImgs = `${import.meta.env.VITE_ASSETS_URL}/imgs/pledge/202406/`;
+    var EOFY = `${import.meta.env.VITE_ASSETS_URL}/imgs/pledge/eofy/`;
     //const today = new Date();
     //const day = today.getDate().toString().padStart(2, "0");
     //const month = (today.getMonth() + 1).toString().padStart(2, "0");
