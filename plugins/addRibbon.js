@@ -97,9 +97,9 @@ function addRibbon() {
     const ribbonDateRange2 = ribbonInterval.fromDateTimes(ribbonDateTime.local(2024, 6, 29, 0, 0), ribbonDateTime.local(2024, 6, 29, 23, 59));
     const ribbonDateRange3= ribbonInterval.fromDateTimes(ribbonDateTime.local(2024, 6, 30, 0, 0), ribbonDateTime.local(2024, 6, 30, 23, 59));
     var htm = "";
-    //var commonImgs = "https://pages.whro.org/assets/imgs/pledge/";
-    //var pledgeImgs = "https://pages.whro.org/assets/imgs/pledge/202406/";
-    var EOFY = "https://pages.whro.org/assets/imgs/pledge/eofy/";
+    //var commonImgs = `${import.meta.env.VITE_ASSETS_URL}/assets/imgs/pledge/`;
+    //var pledgeImgs = `${import.meta.env.VITE_ASSETS_URL}/assets/imgs/pledge/202406/`;
+    var EOFY = `${import.meta.env.VITE_ASSETS_URL}/assets/imgs/pledge/eofy/`;
     //const today = new Date();
     //const day = today.getDate().toString().padStart(2, "0");
     //const month = (today.getMonth() + 1).toString().padStart(2, "0");
@@ -156,7 +156,7 @@ function addRibbon() {
             htm +=          '<img class="d-none d-md-block d-lg-none" src="'+EOFY+'EOFY_ribbon_tag_m.png" alt="" />';
             htm +=          '<img class="d-md-none" src="'+EOFY+'EOFY_ribbon_tag_s.png" alt="" />';
             htm +=          '<div class="amounts">';
-            htm +=              '<a class="promo" href="https://secure.whro.org/site/Donation2?1400.donation=form1&df_id=1400&set.custom.Package=EOFY" target="_blank" rel="noopener"></a>';
+            htm +=              `<a class="promo" href="${import.meta.env.VITE_DONATION_BASE_URL}&set.custom.Package=EOFY" target="_blank" rel="noopener"></a>`;
             htm +=          '</div>';
             htm +=      '</div>';
             htm += '</div>';
@@ -181,7 +181,7 @@ function addRibbon() {
             htm +=          '<img class="d-none d-md-block d-lg-none" src="'+EOFY+'EOFY2ndToLastDay_ribbon_tag_m.png" alt="" />';
             htm +=          '<img id="ribbon_sm" class="d-md-none" src="'+EOFY+'EOFY2ndToLastDay_ribbon_tag_s.png" alt="" />';
             htm +=          '<div class="amounts">';
-            htm +=              '<a class="promo" href="https://secure.whro.org/site/Donation2?1400.donation=form1&df_id=1400&set.custom.Package=EOFY" target="_blank" rel="noopener"></a>';
+            htm +=              `<a class="promo" href="${import.meta.env.VITE_DONATION_BASE_URL}&set.custom.Package=EOFY" target="_blank" rel="noopener"></a>`;
             htm +=          '</div>';
             htm +=      '</div>';
             htm += '</div>';
@@ -207,7 +207,7 @@ function addRibbon() {
             htm +=          '<img class="d-none d-md-block d-lg-none" src="'+EOFY+'EOFYLastDay_ribbon_tag_m.png" alt="" />';
             htm +=          '<img  id="ribbon_sm" class="d-md-none" src="'+EOFY+'EOFYLastDay_ribbon_tag_s.png" alt="" />';
             htm +=          '<div class="amounts">';
-            htm +=              '<a class="promo" href="https://secure.whro.org/site/Donation2?1400.donation=form1&df_id=1400&set.custom.Package=EOFY" target="_blank" rel="noopener"></a>';
+            htm +=              `<a class="promo" href="${import.meta.env.VITE_DONATION_BASE_URL}&set.custom.Package=EOFY" target="_blank" rel="noopener"></a>`;
             htm +=          '</div>';
             htm +=      '</div>';
             htm += '</div>';

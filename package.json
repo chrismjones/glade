@@ -14,7 +14,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "vite build",
-    "lint": "eslint"
+    "build-dev": "vite build --mode development",
+	"lint": "eslint"
   },
   "dependencies": {
     "luxon": "^3.4.4"

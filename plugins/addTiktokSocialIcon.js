@@ -1,10 +1,10 @@
 import onNavigate from '../lib/onNavigate'
 
-const logo = `<img src="https://pages.whro.org/assets/imgs/icon_tiktok.png" style="height:15px" />`;
+const logo = `<img src="${import.meta.env.VITE_ASSETS_URL}/assets/imgs/icon_tiktok.png" style="height:15px" />`;
 
 const socialHTML = `
 <li class="SocialBar-items-item"> 
-	<a class="SocialLink gtm_share" rel="noreferrer" href="https://www.tiktok.com/@whropublicmedia" target="_blank" data-social-service="tiktok" data-platform="tiktok" data-cms-ai="0">
+	<a class="SocialLink gtm_share" rel="noreferrer" href="https://www.tiktok.com/${import.meta.env.VITE_TIKTOK_HANDLE}" target="_blank" data-social-service="tiktok" data-platform="tiktok" data-cms-ai="0">
 		${logo}
 		<span class="sr-only">tiktok</span>
 	</a>
