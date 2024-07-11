@@ -1,3 +1,4 @@
+import { DateTime, Interval } from "luxon";
 import onNavigate from '../lib/onNavigate'
 
 const ribbonCSS = `
@@ -88,23 +89,22 @@ const ribbonCSS = `
     }` 
 
 function addRibbon() {
-    const ribbonDateTime = luxon.DateTime;
-    const ribbonInterval = luxon.Interval;
-
+    const ribbonDateTime = DateTime;
+    const ribbonInterval = Interval;
     let ribbonNow = ribbonDateTime.now();
     // const ribbonDateRange = ribbonInterval.fromDateTimes(ribbonDateTime.local(2024, 6, 17, 6, 0), ribbonDateTime.local(2024, 6, 28, 23, 59));
     const ribbonDateRange1 = ribbonInterval.fromDateTimes(ribbonDateTime.local(2024, 6, 17, 6, 0), ribbonDateTime.local(2024, 6, 28, 23, 59));
     const ribbonDateRange2 = ribbonInterval.fromDateTimes(ribbonDateTime.local(2024, 6, 29, 0, 0), ribbonDateTime.local(2024, 6, 29, 23, 59));
     const ribbonDateRange3= ribbonInterval.fromDateTimes(ribbonDateTime.local(2024, 6, 30, 0, 0), ribbonDateTime.local(2024, 6, 30, 23, 59));
     var htm = "";
-    var commonImgs = "https://pages.whro.org/assets/imgs/pledge/";
-    var pledgeImgs = "https://pages.whro.org/assets/imgs/pledge/202406/";
+    //var commonImgs = "https://pages.whro.org/assets/imgs/pledge/";
+    //var pledgeImgs = "https://pages.whro.org/assets/imgs/pledge/202406/";
     var EOFY = "https://pages.whro.org/assets/imgs/pledge/eofy/";
-    const today = new Date();
-    const day = today.getDate().toString().padStart(2, "0");
-    const month = (today.getMonth() + 1).toString().padStart(2, "0");
-    const year = today.getFullYear().toString().slice(-2);
-    const formattedDate = `${month}${day}${year}`; //Output example: 052424
+    //const today = new Date();
+    //const day = today.getDate().toString().padStart(2, "0");
+    //const month = (today.getMonth() + 1).toString().padStart(2, "0");
+    //const year = today.getFullYear().toString().slice(-2);
+    //const formattedDate = `${month}${day}${year}`; //Output example: 052424
 
     /* TV Membership Drive */    
     

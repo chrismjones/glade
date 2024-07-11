@@ -1,5 +1,3 @@
-/* eslint-disable brace-style */
-
 import onNavigate from '../lib/onNavigate'
 
 
