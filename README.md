@@ -8,7 +8,7 @@ The Glade library adds utilities for development of custom front-end JavaScript 
 
 ## Glade Core
 
-Glade's features center around different challenges in Grove. Glade dispatches a custom event `grove-navigation` whenever it detects that the page has changed.
+Glade's features center around different challenges in Grove. Glade dispatches a custom event `grove-navigate` whenever it detects that the page has changed.
 
 Glade base functions can be separated into a few categories:
 
@@ -42,26 +42,40 @@ Glade has a plugin system for running custom code. These can run any function of
 
 
 
+## Using Glade in Grove
+
+In the Grove admin, go to `Sites & Settings`->`Front-End`->`Advanced`->`Custom Scripts And Styles`.  
+Select `Add Custom Head Elements`  
+Set `Internal Name` to `Glade JS`  
+Set `HTTP Methods` to `GET`  
+Leave `URL Pattern` and `Content Types` blank.  
+Under `Elements`, add a `Script Element`  
+Set `Internal Name` to `Glade JS` (again)  
+Set `Type` to `Link`  
+Paste the url to `glade.js` into the `Script URL` input.  
+Click `Save` and wait about five minutes for Grove's caching to realize you did something.  
+
+
 ### Repository Structure
 ```
 glade/
-├── .vscode/
-│   ├── extensions.json          · recommended VSCode Extensions
-│   └── settings.json            · project-specific VSCode Settings
-│
-├── dist/glade.js                · minified library
+├── dist/glade.js                · minified library (placed here by the build process, not included in repo)
+├── dist/index.html              · placed here by the build process, not included in repo, can ignore
 │
 ├── lib/                         · helper functions for project (private)
 ├── plugins/                     · plugin system
 ├── source/
+├── index.html                   . makes Vite (the build process) happy, can ignore
 ├── index.js                     · entry point for library
 │
 ├── .browserslistrc              · browser support settings for plugins
 ├── .editorconfig                · editor-agnostic settings
-├── .eslintrc.js                 · JavaScript Linting (ESLint)
+├── .env.production              . environment variables 
 ├── .gitignore                   · file patterns to exclude from repository
-├── gruntfile.js                 · entry point for build process
+├── .gitlab-ci.yml               · Gitlab deploy file. Probably useless to you
+├── eslint.config.mjs            · JavaScript Linting (ESLint)
 ├── package-lock.json
 ├── package.json
-└── README.md                    · project description - YOU ARE HERE
+├── README.md                    · project description - YOU ARE HERE
+└── vite.config.mjs              . config for build process
 ```
